@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
 import GameCard from "./GameCard";
 import * as gameService from '../../services/gameService';
-export default function GameCatalog() {
+export default function GameCatalog({
+  navChangeHandler
+}) {
   const [games, setGames] = useState([]);
   const [loading, setLoading] = useState(false);
 
@@ -20,7 +22,7 @@ export default function GameCatalog() {
       {loading ? (
         <p>Loading...</p>
       ) : games.length > 0 ? (
-        games.map((x) => <GameCard key={x._id} game={x} />)
+          games.map((x) => <GameCard key={x._id} game={x} navChangeHandler={navChangeHandler}/>)
       ) : (
         <h3 className="no-articles">No articles yet</h3>
       )}
