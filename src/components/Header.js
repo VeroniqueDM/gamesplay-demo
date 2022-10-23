@@ -1,10 +1,11 @@
-export default function Header() {
+export default function Header({ navChangeHandler }) {
   const onHeaderClick = (e) => {
     e.preventDefault();
     if (e.target.tagName == "A") {
       let url = new URL(e.target.href);
-      console.log(url.pathname);
-      console.log(e.target.href);
+      navChangeHandler(url.pathname);
+      //   console.log(url.pathname);
+        // console.log(e.target.href);
     }
   };
 
@@ -16,7 +17,7 @@ export default function Header() {
         </a>
       </h1>
       <nav>
-        <a href="/catalog">All games</a>
+        <a href="/game-catalog">All games</a>
         <div id="user">
           <a href="/create-game">Create Game</a>
           <a href="/logout">Logout</a>
