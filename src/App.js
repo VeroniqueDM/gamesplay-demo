@@ -7,7 +7,7 @@ import Register from "./components/Register";
 import EditGame from "./components/EditGame";
 import GameDetails from "./components/GameDetails";
 import CreateGame from "./components/CreateGame";
-import GameCatalog from "./components/GameCatalog";
+import GameCatalog from "./components/GameCatalog/GameCatalog";
 import ErrorPage from "./components/ErrorPage";
 
 function App() {
