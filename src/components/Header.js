@@ -17,7 +17,7 @@ export default function Header({ navChangeHandler }) {
         </a>
       </h1>
       <nav>
-        <a href="/game-catalog">All games</a>
+        <a href="/games">All games</a>
         <div id="user">
           <a href="/create-game">Create Game</a>
           <a href="/logout">Logout</a>
