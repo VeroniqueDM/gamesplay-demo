@@ -1,10 +1,15 @@
 import { useEffect, useState } from "react";
-import * as gameService from '../services/gameService';
+import * as gameService from "../services/gameService";
 
-export default function GameDetails({ id }) {
+export default function GameDetails({
+  //  location,
+  //  history,
+  match,
+}) {
+  let id = match.params.gameId;
   const [game, setGame] = useState({});
   useEffect(() => {
-    gameService.getOne(id).then(result => {
+    gameService.getOne(id).then((result) => {
       setGame(result);
     });
   }, []);
@@ -19,9 +24,7 @@ export default function GameDetails({ id }) {
           <p className="type">{game.category}</p>
         </div>
 
-        <p className="text">
-         {game.summary}
-        </p>
+        <p className="text">{game.summary}</p>
 
         <div className="details-comments">
           <h2>Comments:</h2>
