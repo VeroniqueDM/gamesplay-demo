@@ -1,16 +1,18 @@
-import { useEffect, useState } from "react";
-import GameCard from "./GameCard";
-import * as gameService from '../../services/gameService';
-export default function GameCatalog({
-  navChangeHandler
-}) {
+import React from "react";
+import * as gameService from "../../services/gameService";
+import { useEffect, useState, lazy,Suspense } from "react";
+
+// import GameCard from "./GameCard";
+
+const GameCard = lazy(() => import("./GameCard"));
+
+export default function GameCatalog({ navChangeHandler }) {
   const [games, setGames] = useState([]);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     setLoading(true);
-    gameService.getAll()
-    .then(result => {
+    gameService.getAll().then((result) => {
       setGames(result);
       setLoading(false);
     });
@@ -19,13 +21,19 @@ export default function GameCatalog({
   return (
     <section id="catalog-page">
       <h1>All Games</h1>
+      <Suspense fallback={<p>Loading...</p>}>
+
       {loading ? (
-        <p>Loading...</p>
+        <p>LOADING...</p>
       ) : games.length > 0 ? (
-          games.map((x) => <GameCard key={x._id} game={x} navChangeHandler={navChangeHandler}/>)
+        games.map((x) => (
+          <GameCard key={x._id} game={x} navChangeHandler={navChangeHandler} />
+        ))
       ) : (
         <h3 className="no-articles">No articles yet</h3>
       )}
+            </Suspense>
+
     </section>
   );
 }

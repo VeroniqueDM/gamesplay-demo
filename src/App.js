@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, Redirect } from "react-router-dom";
 
 import Header from "./components/Header";
 import WelcomeWorld from "./components/WelcomeWorld";
@@ -38,7 +38,7 @@ function App() {
   return (
     <div id="box">
       {/* <Header navChangeHandler={navChangeHandler} /> */}
-      <Header  />
+      <Header />
       <main id="main-content">
         <Switch>
           <Route path="/" exact component={WelcomeWorld} />
@@ -48,6 +48,13 @@ function App() {
 
           <Route path="/create-game" component={CreateGame} />
           <Route path="/login" component={Login} />
+          <Route
+            path="/logout"
+            render={(props) => {
+              console.log("Logged out");
+              return <Redirect to="/" />;
+            }}
+          />
           <Route path="/edit-game" component={EditGame} />
           <Route path="/register" component={Register} />
         </Switch>

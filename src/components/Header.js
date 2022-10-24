@@ -1,8 +1,10 @@
-import { Link } from "react-router-dom";
-
-export default function Header({ 
-  // navChangeHandler,
- }) {
+import { Link, NavLink } from "react-router-dom";
+import './Header.css';
+export default function Header(
+  {
+    // navChangeHandler,
+  }
+) {
   // const onHeaderClick = (e) => {
   //   e.preventDefault();
   //   if (e.target.tagName == "A") {
@@ -13,23 +15,36 @@ export default function Header({
   //   }
   // };
 
+  let activeLinkStyles = {
+    backgroundColor: 'red',
+  };
   return (
     // <header onClick={onHeaderClick}>
     <header>
       <h1>
-        <Link className="home" to="/">
+        <NavLink activeClassName="active-navigation-link" className="home" to="/">
           GamesPlay
-        </Link>
+        </NavLink>
       </h1>
       <nav>
-        <Link to="/games">All games</Link>
+        <NavLink activeStyle={activeLinkStyles} to="/games">
+          All games
+        </NavLink>
         <div id="user">
-          <Link to="/create-game">Create Game</Link>
-          <Link to="/logout">Logout</Link>
+          <NavLink activeStyle={activeLinkStyles} to="/create-game">
+            Create Game
+          </NavLink>
+          <NavLink activeStyle={activeLinkStyles} to="/logout">
+            Logout
+          </NavLink>
         </div>
         <div id="/guest">
-          <Link to="/login">Login</Link>
-          <Link to="/register">Register</Link>
+          <NavLink activeStyle={activeLinkStyles} to="/login">
+            Login
+          </NavLink>
+          <NavLink activeStyle={activeLinkStyles} to="/register">
+            Register
+          </NavLink>
         </div>
       </nav>
     </header>

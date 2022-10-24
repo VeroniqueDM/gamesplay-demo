@@ -1,7 +1,15 @@
-export default function Login() {
+import { useHisstory } from "react-router-dom";
+
+export default function Login({ history }) {
+  // let history = useHisstory();
+  const onFormSubmit = (e) => {
+    e.preventDefault();
+    // To do : Login
+    history.push("/games");
+  };
   return (
     <section id="login-page" className="auth">
-      <htmlForm id="login">
+      <form id="login" onSubmit={onFormSubmit}>
         <div className="container">
           <div className="brand-logo"></div>
           <h1>Login</h1>
@@ -22,7 +30,7 @@ export default function Login() {
             </span>
           </p>
         </div>
-      </htmlForm>
+      </form>
     </section>
   );
 }
